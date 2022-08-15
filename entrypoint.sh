@@ -123,7 +123,7 @@ for repository in "${REPOSITORIES[@]}"; do
         -H "Content-Type: application/json" \
         -u ${USERNAME}:${GITHUB_TOKEN} \
         --silent \
-        ${GITHUB_API_URL}/repos/${repository}
+        ${GITHUB_API_URL}/repos/${repository} > /dev/null
 
     echo " "
 
@@ -152,7 +152,7 @@ for repository in "${REPOSITORIES[@]}"; do
             -H "Content-Type: application/json" \
             -u ${USERNAME}:${GITHUB_TOKEN} \
             --silent \
-            ${GITHUB_API_URL}/repos/${repository}/branches/${BRANCH_PROTECTION_NAME}/protection
+            ${GITHUB_API_URL}/repos/${repository}/branches/${BRANCH_PROTECTION_NAME}/protection > /dev/null
     elif [ "$BRANCH_PROTECTION_ENABLED" == "false" ]; then
         curl \
             -X DELETE \
@@ -160,7 +160,7 @@ for repository in "${REPOSITORIES[@]}"; do
             -H "Content-Type: application/json" \
             -u ${USERNAME}:${GITHUB_TOKEN} \
             --silent \
-            ${GITHUB_API_URL}/repos/${repository}/branches/${BRANCH_PROTECTION_NAME}/protection
+            ${GITHUB_API_URL}/repos/${repository}/branches/${BRANCH_PROTECTION_NAME}/protection > /dev/null
     fi
 
     echo "Completed [${repository}]"
